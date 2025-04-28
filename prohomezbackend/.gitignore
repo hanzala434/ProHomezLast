@@ -1,0 +1,8 @@
+/node_modules
+/prohomez/node_modules
+.env*
+/.env*
+/prohomez/.env*
+node_modules
+node_modules
+/prohomez
