@@ -8,21 +8,21 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Node modules
-prohomezlastfrontend/node_modules/
+prohomelastfrontend/node_modules/
 prohomezbackend/node_modules/
 node_modules
 
 
 # Environment variables
-prohomezlastfrontend/.env
-prohomezlastfrontend/.env.local
-prohomezlastfrontend/.env.*.local
+prohomelastfrontend/.env
+prohomelastfrontend/.env.local
+prohomelastfrontend/.env.*.local
 prohomezbackend/.env
 prohomezbackend/.env.local
 prohomezbackend/.env.*.local
 
 # Build output
-prohomezlastfrontend/dist/
+prohomelastfrontend/dist/
 prohomezbackend/dist/
 
 # Editor directories and files
