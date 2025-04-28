@@ -1,0 +1,165 @@
+.insertMediaLabel {
+    background: #d9d9d9;
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    cursor: pointer;
+    height: 160px;
+}
+
+.insertMediaLabel svg {
+    font-size: inherit;
+}
+
+.primaryHeading {
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.contentGatheringBox {
+    margin-top: 1.3em;
+}
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6em 0em;
+}
+
+.secondaryHeading {
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.inputTag:focus {
+    border-color: #0f0f0f;
+    box-shadow: none !important;
+}
+
+.inputTag[type="number"]::-webkit-outer-spin-button,
+.inputTag[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+.subServiceCheckBox label {
+    gap: .5em;
+    cursor: pointer;
+}
+
+.subServiceCheckBox span {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.keySpecifications {
+    display: flex;
+}
+
+.keySpecifications span {
+    border: 1px solid #cdcdcd;
+    min-width: 50%;
+    padding: 0.4em 1em;
+}
+
+.keySpecifications span:first-child {
+    background-color: #e9e9e9;
+}
+
+.keySpecifications span:nth-child(2) {
+    padding: 0px;
+    margin: 0px;
+}
+
+.specificationInput {
+    width: 100%;
+    height: 100%;
+    padding: 0.3em 0.7em;
+    font-family: 'Figtree';
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+
+.importantFilling {
+    color: #bb0000;
+    font-size: 0.8em;
+    position: relative;
+    bottom: 3px;
+}
+
+.imagePreview {
+    padding: 1.2em 0em;
+}
+
+.selectedImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.imagePreviewItem {
+    width: 100%;
+    object-fit: cover;
+}
+
+.createProductBtn {
+    background: var(--main-primary-color);
+    font-family: 'Figtree';
+    font-weight: 500;
+    padding: 0.4em 1em;
+}
+
+.createProductBtn:hover {
+    background: #ffc800;
+}
+
+.errorText {
+    color: #e90000;
+    font-family: 'Figtree';
+    font-weight: 400;
+    padding-top: 5px;
+}
+@media all and (max-width:600px) {
+    .insertMediaLabel{
+        height: 20vh;
+        margin-top: 15%;
+        font-size: 2.4rem;
+    }
+    .secondaryHeading{
+        font-size: 2.5rem;
+    }
+    .inputTag {
+        font-size: 2.5rem; /* Adjust the size as needed */
+    }
+    .formcheckinputeditproduct{
+        font-size: 2rem;
+        margin-left: 1rem !important;
+    }
+    .input-group-text{
+        font-size: 10.5rem !important; /* Adjust size as needed */
+      }
+      .DollarSign{
+        font-size: 2rem;
+      }
+      .createProductBtn{
+        font-size: 2rem;
+      }
+      .errorText{
+        font-size: 2rem;
+      }
+}

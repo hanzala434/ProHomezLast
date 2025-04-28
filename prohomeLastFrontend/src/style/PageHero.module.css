@@ -1,0 +1,95 @@
+.pageHero{
+    height: 100vh;
+    overflow: hidden;
+}
+.pageHeroDescription{
+ background: linear-gradient(to right, rgba(196, 153, 81, 1), rgba(248, 203, 125, 0.8));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.pageHero::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.pageHeroBgImg{
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.pageHeroContainer{
+    z-index: 3;
+}
+.contentBox{
+    width: 60%;
+    margin: auto;
+}
+.pageHeroHeading{
+    font-family: 'Figtree';
+    font-weight: 700;
+    font-size: 3.3em;
+    margin: 0px;
+    line-height: 1.1em;
+    padding-bottom: 15px;
+}
+.pageHeroDescription{
+    font-family: 'Poppins';
+    font-size: 1.15em;
+    font-weight: 500;
+}
+.searchBoxContainer{
+    padding-top: 15px;
+}
+.inputQuickSearchBox {
+    color: #fff;
+    font-family: 'Figtree';
+    font-size: 1.25em;
+    border: 1px solid #fff;
+    padding: 0.3em 0.6em;
+    border-radius: 8px;
+    margin-right: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.inputQuickSearchBox:hover {
+    background: #0808088f;
+}
+.real-estate-link-1{    
+}
+@media all and (max-width:600px) {
+    .pageHero h2{
+        font-size: 8rem;
+    }  
+}
+.real-estate-link-1{
+    font-size:2em
+}
+
+@media (max-width: 768px) {
+    .pageHeroHeading{
+        font-size: 8em;
+    }
+
+    .pageHeroDescription{
+        font-family: 'Poppins';
+        font-size: 3.15em;
+        font-weight: 500;
+    }
+
+    .real-estate-link-1{
+        font-size:5em
+    }
+
+
+
+}

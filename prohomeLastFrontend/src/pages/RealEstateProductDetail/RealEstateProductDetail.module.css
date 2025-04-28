@@ -1,0 +1,274 @@
+.productDetailBox{
+    padding: 3em 0em;
+}
+.productCard1{
+    /* border: 2px solid blue; */
+    margin-right: 5vw !important;
+}
+.amenitiesGrid{
+    display: flex;
+    /* border: 2px solid blue; */
+    /* gap: 1rem; */
+    /* width: 80%; */
+    flex-wrap: wrap;
+    margin-bottom: 3%;
+}
+.amenityItem{
+    /* border: 2px solid red; */
+    width: fit-content;
+}
+.amenityCircle{
+    width: 1rem;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+    /* border: 2px solid green; */
+    height: 1rem;  
+    background-color: rgba(196,153,81,255);
+    border-radius: 50%;
+    display: inline-block;
+}
+.productCard{
+    /* border: 2px solid blue; */
+    width: fit-content !important;
+}
+.productName{
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 16px;
+}
+.productPrice{
+    font-family: 'Figtree';
+    font-size: 14px;
+    font-weight: 600;
+    text-align: end;
+    color: rgb(148, 126, 51);
+    /* border: 2px solid red; */
+    /* justify-content: center; */
+    /* gap: 1rem; */
+    
+}
+.productPrice select{
+    height: 100%;
+    margin-top: 0.3rem;
+}
+.propertyDetailIcon{
+    margin-bottom: 0px;
+    text-align: center;
+}
+.propertyDetailIcon svg{
+    font-size: 2.7em;
+}
+.propertyDetailHeading{
+    text-align: center;
+    font-family: 'Figtree';
+    font-size: 1.3em;
+    padding-top: 0.6em;
+}
+.productDescription{
+    font-family: 'Poppins';
+    font-size: 1.05em;
+    padding-top: 1em;
+    line-height: 1.7em;
+    text-align: justify;
+}
+.readMoreButton{
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: #1212c1;
+    padding-left: 5px;
+}
+.amenities{
+    padding: 2em 0em;
+}
+.amenitiesHeading{
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.8em;
+}
+.amenitiesBox{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    padding: 1em 2em;
+    border-radius: 8px;
+    height: 100%;
+}
+.amenitiesDetail{
+    font-family: 'Poppins';
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+    .productName{
+        font-family: 'Figtree';
+        font-weight: 500;
+        font-size: 3em;
+    }
+    .productPrice{
+        font-family: 'Figtree';
+        font-size: 3em;
+        font-weight: 600;
+        text-align: end;
+        color: rgb(148, 126, 51);
+        /* border: 2px solid red; */
+        /* justify-content: center; */
+        /* gap: 1rem; */
+        
+    }
+    .productPrice select{
+        height: 100%;
+        margin-top: 4.3rem;
+    }
+    .propertyDetailIcon{
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    .propertyDetailIcon svg{
+        font-size: 3em;
+    }
+    .propertyDetailHeading{
+        text-align: center;
+        font-family: 'Figtree';
+        font-size: 3em;
+        padding-top: 0.6em;
+    }
+    .productDescription{
+        font-family: 'Poppins';
+        font-size: 3em;
+        padding-top: 1em;
+        line-height: 1.7em;
+        text-align: justify;
+    }
+    .readMoreButton{
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: #1212c1;
+        padding-left: 5px;
+    }
+    .amenities{
+        padding: 2em 0em;
+    }
+    .amenitiesHeading{
+        font-family: 'Figtree';
+        font-weight: 600;
+        font-size: 3em;
+    }
+    .amenitiesBox{
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+        padding: 1em 2em;
+        border-radius: 8px;
+        height: 100%;
+    }
+    .amenitiesDetail{
+        font-family: 'Poppins';
+        font-weight: 500;
+        text-transform: capitalize;
+        font-size: 4em;
+    }
+    .productDetailBox{
+        padding: 5em;
+    }
+    .productCard{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .productCard1{
+        width: 100% !important;
+        /* border: 2px solid blue; */
+    }
+    .productCard1 img{
+        width: 100% !important;
+    }
+    .productCard2{
+        width: 90vw !important;
+        /* border: 2px solid blue; */
+    }
+    .productCard2 h2{
+        font-size: 3rem !important;
+    }
+    .productCard2 h3{
+        font-size: 3rem !important;
+    }
+    .productHeading{
+        font-size: 3rem !important;
+    }
+    .propertyDetailIcon{
+        font-size:2rem;
+    }
+    .realEstateDetailspriceh3{
+        font-size: 15px !important;
+    }
+    .currencyDropdown option{
+        font-size: 12px !important;
+    }
+    .currencyHeading{
+        font-size: 3rem;
+    }
+    .currencyHeading strong{
+        font-size: 3rem;
+    }
+    .suggestedcard{
+        height: min-content !important;
+        width: 20vw !important;
+    }
+    .productDetail{
+        font-size: 2.2rem !important;
+    }
+    .amenityText{
+        font-size: 2rem;
+    }
+    .amenityCircle{
+        width: 2rem;
+        margin-right: 0.3rem;
+        margin-left: 0.3rem;
+        /* border: 2px solid green; */
+        height: 2rem;  
+        background-color: rgba(196,153,81,255);
+        border-radius: 50%;
+        display: inline-block;
+    }
+    
+    .suggestedContainer{
+        padding-right: 5%;
+        padding-left: 5% !important;
+    }
+    .suggestedHeading{
+        font-size: 2.7rem;
+        font-weight: 600;
+    }
+    .RatingDiv{
+        margin-left: 5%;
+    }
+    .suggestedcard img{
+        height: 7vh !important;
+        max-height: 7vh !important;
+    }
+}
+.suggestedHeading{
+    text-align: center;
+    margin-bottom: 1%;
+    font-weight: 600;
+}
+.suggestedContainer{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* border: 2px solid blue; */
+    padding-left: 10%;
+}
+.suggestedcard{
+    width: 15vw;
+    height: 45vh;
+}
+.suggestedcard img{
+    object-fit: cover;
+    height: 80%;
+    max-height: 150px;
+    width: 100%;
+}

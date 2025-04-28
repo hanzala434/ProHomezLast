@@ -1,0 +1,7 @@
+@media all and (max-width:768px) {
+    .categoryh1{
+        font-size: 5rem !important;
+        margin-top: 5%;
+        margin-left: 8vw;
+    }
+}

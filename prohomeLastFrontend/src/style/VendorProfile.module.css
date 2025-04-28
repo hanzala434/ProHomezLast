@@ -1,0 +1,54 @@
+@media all and (max-width:600px) { 
+.vendorprofile1 {
+margin-top: 14vh;
+max-width: 80vw;
+max-width: fit-content;
+}
+.vendorprofile1 {
+    font-size: 4.5rem; /* Increase overall font size */
+  }
+  
+  .vendorprofile1 h2 {
+    font-size: 4rem; /* Bigger heading */
+    font-weight: bold;
+    padding-top: 4vh;
+  }
+  
+  .vendorprofile1 label {
+    font-size: 3rem; /* Larger label text */
+    font-weight: 600;
+  }
+  
+  .vendorprofile1 input {
+    font-size: 3rem; /* Bigger input text */
+    padding: 0.8rem;
+  }
+  
+  .vendorprofile2 img {
+    width: 25vw; /* Increase image size responsively */
+    height: 25vw;
+    max-width: 450px;
+    max-height: 450px;
+    border-radius: 50%;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .vendorprofilesubmit{
+    font-size: 3rem; /* Bigger button text */
+    padding: 3.5rem 4rem;
+    width: 20vw !important;
+    /* border: 2px solid blue; */
+    margin-top: 3vh !important;
+  }
+  .vendorprofile2 {
+    width: 120px; /* Increase the width */
+    height: 120px; /* Increase the height */
+    object-fit: cover; /* Ensure the image scales properly */
+    border-radius: 50%; /* Maintain round shape */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .textarea-small {
+    height: 5vh;
+    font-size: 3rem;
+  }
+}

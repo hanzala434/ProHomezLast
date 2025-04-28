@@ -1,0 +1,137 @@
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .profileSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .profileImage {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 4px solid #d1d5db; /* Gray-300 */
+  }
+  
+  @media (min-width: 768px) {
+    .profileImage {
+      width: 128px;
+      height: 128px;
+    }
+  }
+  
+  .vendorName {
+    font-size: 3rem; /* 6xl on mobile */
+    font-weight: bold;
+    color: #1f2937; /* Gray-800 */
+    margin-top: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .vendorName {
+      font-size: 1.875rem; /* 3xl on medium screens */
+    }
+  }
+  
+  .vendorInfo {
+    font-size: 3.5rem;
+    color: #4b5563; /* Gray-600 */
+  }
+  
+  @media (min-width: 768px) {
+    .vendorInfo {
+      font-size: 1rem;
+    }
+
+   
+  }
+  
+  .aboutSection {
+    background-color: #f3f4f6; /* Gray-100 */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .aboutTitle {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #374151; /* Gray-700 */
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .aboutTitle {
+      font-size: 2rem;
+    }
+  }
+  
+  .description {
+    font-size: 2rem;
+    color: #4b5563;
+  }
+  
+  @media (min-width: 768px) {
+    .description {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .productsTitle {
+    font-size: 5rem;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+  
+  .productsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .productItem {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .productItem {
+      width: 30%;
+    }
+
+    
+  }
+
+    
+  @media (max-width: 768px) {
+  .aboutSection {
+    background-color: #f3f4f6; /* Gray-100 */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding:5em;
+    margin: 10px;
+    margin-top: 1.5rem;
+  }
+
+  .aboutTitle {
+    font-size: 5em;
+    font-weight: 600;
+    color: #374151; /* Gray-700 */
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 3.25rem;
+  }
+}

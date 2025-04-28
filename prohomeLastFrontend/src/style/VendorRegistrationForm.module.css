@@ -1,0 +1,201 @@
+.vendorRegistrationFormHeading{
+    font-family: 'Figtree';
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.inputBox input {
+    background: transparent;
+    border: none;
+    outline: none;
+    letter-spacing: 0.05em;
+    z-index: 2;
+}
+
+.inputBox .contactFormSpan {
+    pointer-events: none;
+    position: absolute;
+    font-size: 1em;
+    left: 0px;
+    transform: translateY(0px);
+    transition: all 0.3s;
+}
+
+.inputBox input:user-valid~.contactFormSpan,
+.inputBox input:focus~.contactFormSpan {
+    color: #000;
+    font-size: 0.75em;
+    transform: translateY(-35px);
+}
+
+.inputBox .contactBorderIcon {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+    background-color: #d9d9d9;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.inputBox input:user-valid~.contactBorderIcon,
+.inputBox input:focus-visible~.contactBorderIcon {
+    height: calc(100% - 28px);
+    border-radius: 8px;
+    z-index: 1;
+}
+.inputBox input[type="number"]::-webkit-outer-spin-button,
+.inputBox input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.contactFormSpan span{
+    font-size: inherit;
+    color: #a50909;
+    margin-left: 3px;
+}
+.selectionBox :where(select, option){
+    cursor: pointer;
+}
+.contactSendBtn {
+    background-color: #29292b;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    font-family: 'Figtree';
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.contactSendBtn:hover {
+    background-color: var(--main-primary-color);
+    color: #29292b;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+@media (max-width: 768px) {
+    .inputBox .contactFormSpan {
+        pointer-events: none;
+        position: absolute;
+        font-size: 1em;
+        left: 0px;
+        transform: translateY(0px);
+        transition: all 0.3s;
+        
+    }
+    .inputBox input:user-valid~.contactFormSpan,
+    .inputBox input:focus~.contactFormSpan {
+        color: #000;
+        font-size: 1.75em;
+        transform: translateY(-5px);
+    }
+    .vendorRegistrationFormHeading {
+        font-size: 3em; /* Adjusted for better readability */
+    }
+
+    .inputBox {
+        margin-bottom: 5px; /* Adds more spacing between fields */
+    }
+
+    .inputBox input {
+        padding: 5px 5px; /* Increases input padding */
+        font-size: 2.2em; /* Makes input text more readable */
+    }
+
+    .inputBox .contactFormSpan {
+        font-size: 2.5em; /* Keeps label size consistent */
+    }
+
+    .inputBox .contactBorderIcon {
+        height: 1px; /* Makes the underline more visible */
+    }
+
+    .selectionBox {
+        margin-bottom: 1px; /* Adds spacing for dropdowns */
+    }
+
+    .contactSendBtn {
+        padding: 5px; /* Increases button padding */
+        font-size: 4.2em; /* Increases button text size */
+        margin: auto;
+        display: flex;
+        width: 100px;
+        justify-content: center;
+
+    }
+    .contactFormSpan{
+        margin-top: -6%;
+        font-size: 3rem !important;
+    }
+    .vendorRegistrationFormHeading{
+        margin-bottom: 10%;
+        margin-top: 5%;
+    }
+    .inputBox input:user-valid~.contactFormSpan,
+.inputBox input:focus~.contactFormSpan {
+    color: #000;
+    /* font-size: 0.75em; */
+    transform: translateY(0px);
+}
+.inputBox{
+    margin-bottom: 2%;
+}
+.selectBrand {
+    color: gray !important;
+    font-size: 3rem !important;
+  }
+  .selectBrand option{
+font-size: 3rem !important;
+/* margin-bottom: -5% !important; */
+  }
+  /* Remove spinner for Chrome, Safari, Edge, and Opera */
+/* .inputBox input::-webkit-outer-spin-button,
+.inputBox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+/* Remove spinner for Firefox */
+.inputBox input[type="number"] {
+  -moz-appearance: textfield;
+}
+.sendOTP{
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+.verifyOTP{
+    font-size: 2.5rem;
+}
+small{
+    margin-bottom: 2rem;
+}
+.inputBox input {
+    border: none;
+    outline: none;
+    padding-bottom: 2px; /* Space for the border */
+}
+
+.inputBox .contactBorderIcon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #d9d9d9; /* Default border color */
+    transition: background-color 0.3s, height 0.3s;
+}
+
+.inputBox input:focus ~ .contactBorderIcon,
+.inputBox input:valid ~ .contactBorderIcon {
+    background-color: #8b8484; /* Border color on focus or when valid */
+    height: 0.5px; /* Ensure border is visible */
+}
+}
+
+.selectBrand{
+    /* border: 2px solid blue; */
+    /* background-color: #d9d9d9; */
+}
+.selectionBox112{
+    /* background-color: #d9d9d9;    */
+}

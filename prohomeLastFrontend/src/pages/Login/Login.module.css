@@ -1,0 +1,73 @@
+.LoginMainBox {
+    padding: 5em 0em;
+}
+.backtologin button{
+    
+    background: linear-gradient(rgb(235, 190, 111),rgba(196,153,81,215));
+    border-radius: 0.4rem;
+    border: none;
+    text-decoration: none;
+    color: #fff !important;
+    padding: 0.6em 1.6em;
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 1.2em;
+    border-radius: 8px;
+    width: 94%;
+    margin-left: 0.5rem;
+}
+.LoginHeading {
+    font-family: 'Figtree';
+    font-weight: 700;
+    font-size: 2.3em;
+    margin-bottom: 0.7em;
+}
+.forgetpasswordPara button{
+    background: var(--main-primary-color);
+    border-radius: 0.4rem;
+    border: none;
+    text-decoration: none;
+    color: #0b0b0b !important;
+    padding: 0.6em 1.6em;
+    font-family: 'Manrope';
+    font-weight: 600;
+    font-size: 1.2em;
+    border-radius: 8px;
+    width: 97%;
+}
+.loginFormBox {
+    padding: 4em 4em;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    background: #fff;
+    width: 55%;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .LoginMainBox {
+        padding: 5em 0em;
+    }
+    
+    .LoginHeading {
+        font-family: 'Figtree';
+        font-weight: 700;
+        font-size: 6.3em;
+        margin-bottom: 0.7em;
+    }
+    
+    .loginFormBox {
+        padding: 4em 4em;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+        background: #fff;
+        width: 85%;
+        margin: auto;
+    }
+    .LoginHeading{
+        font-size: 3rem;
+    }
+    .backtologin button{
+        width: 100%;
+    }
+}

@@ -1,0 +1,6 @@
+.category, .vendor, .products {
+    padding: 4em 0em 0em 0em;
+}
+ .products {
+    padding: 4em 0em 4em 0em;
+}

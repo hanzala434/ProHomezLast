@@ -1,0 +1,76 @@
+.vendorDashboardLink{
+    background: var(--main-primary-color);
+    font-family: 'Figtree';
+    font-weight: 600;
+    padding: 0.6em 1.3em;
+    font-size: 1.02em;
+    transition: all 0.3s;
+}
+.vendorDashboard{
+    min-height: 80vh;
+    /* height: auto;    */
+}
+.vendorDashboardLink:hover{
+    background: #ffc800;
+}
+.allProducts{
+    padding: 2.6rem 0rem;
+}
+.allProductHeading{
+    font-family: 'Figtree';
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.categoriesDisplayBtn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: rgb(131, 101, 49);
+}
+
+.categoryActive {
+    background-color: rgb(131, 101, 49);
+    color:white;
+}
+@media all and (max-width:600px) {
+ .vendorDashboardLink   {
+    font-size: 3rem;
+    /* margin-top: ; */
+    
+ }
+ .allProducts{
+  font-size: 3rem;
+}
+.vendorProductBox h3{
+    /* border: 2px solid blue; */
+    font-size: 3rem;
+}
+.vendorProductBox p{
+    font-size: 3rem;
+}
+.vendorDashboard{
+    margin-left: 0 !important;
+    padding: 0 !important;
+}
+.vendorDashboardLink{
+    font-size: 3rem;
+}
+.vendorDashboard{
+    margin-top: 20%;
+}
+.categoriesDisplayBtn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: rgb(131, 101, 49);
+    font-size: 3em;
+}
+
+.categoryActive {
+    background-color: rgb(131, 101, 49);
+    color:white;
+}
+}

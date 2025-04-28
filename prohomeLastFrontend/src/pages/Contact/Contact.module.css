@@ -1,0 +1,82 @@
+.contact{
+    padding: 5em 0em;
+}
+.contactHeading{
+    font-family: 'Figtree';
+    font-weight: 700;
+    font-size: 2.7em;
+}
+.contactPara{
+    width: 60%;
+    margin: auto;
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.contactDetailBox{
+    padding: 1.2em 2em;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+.contactDetailBoxHeading{
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.7em;
+    margin-bottom: 0.3em;
+}
+.contactDetailBoxPara{
+    font-family: 'Poppins';
+    font-size: 1.05em;
+    font-weight: 400;
+}
+.contactDetailBoxPara svg{
+    font-size: 1.25em;
+}
+
+@media screen and (max-width: 767px) {
+    .contact{
+        padding: 10em;
+        margin: 10em;
+    }
+    .contactHeading{
+        font-family: 'Figtree';
+        font-weight: 700;
+        font-size: 3rem;
+    }
+    .contactPara{
+        width: 100%;
+        font-family: 'Poppins';
+        font-size: 2.7em;
+
+    }
+    .contactDetailBox{
+        padding: 5.2em ;
+        margin: 3em;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    }
+    .contactDetailBoxHeading{
+        font-family: 'Figtree';
+        font-weight: 600;
+        font-size: 3rem;
+        margin-bottom: 0.3em;
+    }
+    .contactDetailBoxPara{
+        font-family: 'Poppins';
+        font-size: 2rem;
+        font-weight: 400;
+    }
+    .contactDetailBoxPara svg{
+        font-size: 3.25em;
+    }
+    .MdLocationPin{
+        font-size: 3rem !important;
+    }
+    .IoIosMailOpen{
+        font-size: 3rem !important;
+    }
+    .IoIosCall{
+        font-size: 3rem !important;
+    }
+}

@@ -1,0 +1,176 @@
+.imageSelectionContainer {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    bottom: 5%;
+    width: 90%;
+    height: 90%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    overflow: auto;
+}
+
+.imageSelectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+}
+
+.buttonsContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.toggleButton {
+    padding: 10px 20px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggleButton.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.uploadSection {
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.uploadInput {
+    display: none;
+}
+
+.uploadLabel {
+    display: inline-block;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.imagePreviewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imagePreviewItem {
+    position: relative;
+}
+
+.previewImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.removeImageButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.closeButton {
+    color: #000000;
+    background: none;
+    border: none;
+    font-size: 1.7em;
+    display: flex;
+}
+.closeButton svg{
+    font-size: inherit;
+}
+
+.insertMediaLabel{
+    background: #d5d5d5;
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.selectedImagesSection{
+    padding: 1.3em 0em;
+}
+.selectedImageItem{
+    height: 150px;
+    width: 185px;
+    padding: 10px 10px;
+    border: 1px solid #9f9f9f;
+    cursor: pointer;
+    overflow: hidden;
+}
+.selectedImageItem img{
+    width: 100%;
+    object-fit: cover;
+}
+.loadingImgBox{
+    height: 150px;
+    width: 185px;
+    padding: 10px 10px;
+    border: 1px solid #9f9f9f;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #fbfbfb;
+}
+.loadingLine{
+    width: 75%;
+    height: 10%;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #f0f0f0 38%, var(--main-primary-color) 0%);
+}
+.imageSelect{
+    border: 3px solid var(--main-primary-color);
+    padding: 15px;
+}
+.imageSelectBtn{
+    background: var(--main-primary-color);
+    font-family: 'Figtree';
+    font-weight: 500;
+    padding: 0.4em 1em;
+}
+.imageSelectBtn:hover{
+    background: #ffc800;
+}
+@media all and (max-width:600px) {
+    .toggleButton,.imageSelectBtn{
+        font-size: 1.8rem;
+    }
+    .closeButton{
+        font-size: 3rem;
+    }
+    .insertMediaLabel{
+        font-size: 2.3rem;
+    }
+    .MdPermMedia{
+        font-size: 3rem;
+    }
+    .uploadSection{ 
+        /* border: 2px solid blue; */
+        height: 50vh;
+    }
+}

@@ -1,0 +1,84 @@
+.insertMediaFirstBox{
+    background-color: rgb(240 240 240);
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(171, 171, 171);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.displayMediaBox{
+    min-height: 80vh;
+}
+.addMediaBtn{
+    font-family: 'Figtree';
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+.addMediaBtn svg{
+    font-size: inherit;
+}
+.mediaModalBox{
+    max-width: 80%;
+}
+.modalContent{
+    min-height: 90vh;
+}
+.insertMediaLabel{
+    background: #d9d9d9;
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    cursor: pointer;
+}
+.insertMediaLabel svg{
+    font-size: inherit;
+}
+.mediaImgBox{
+    height: 150px;
+    width: 185px;
+    padding: 10px 10px;
+    border: 1px solid #9f9f9f;
+    overflow: hidden;
+}
+.mediaImgBox img{
+    object-fit: cover;
+    height: 100%;
+}
+.mediaImages{
+    width: 30%;
+}
+@media all and (max-width:600px) {
+    .displayMediaBox{
+        /* margin-top: 20rem !important; */
+    }
+    .insertMediaLabel{
+        font-size: 2.5rem !important;
+        /* border: 2px solid blue; */
+    }
+    .addMediaBtn{
+        font-size: 2rem !important;
+    }
+    .mediacross{
+        font-size: 2rem;
+    }
+    .mediaModalBox{
+        /* width: 100vw !important; */
+        /* border: 2px solid blue; */
+        max-width: 100%;
+    }
+    .displayAddMedia{
+        /* width: 100vw !important; */
+        /* border: 2px solid blue; */
+    }
+    .displayMediaBox{
+        /* border: 2px solid red; */
+        /* width: 120vw; */
+    }
+}

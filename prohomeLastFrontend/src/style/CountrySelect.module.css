@@ -1,0 +1,23 @@
+
+  
+  @media (max-width: 600px) {
+    .countryLabel {
+        font-size: 3rem !important;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      .select {
+        width: 100%;
+        padding: 0.5rem 0.5rem;
+        border-radius: 3px;
+        font-size: 3rem !important;
+      }
+    .select {
+      font-size: 2.5rem;
+    }
+    .select option {
+      font-size: 2.5rem !important;
+    }
+  }

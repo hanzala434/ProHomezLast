@@ -1,0 +1,94 @@
+.pageCategoriesHeading{
+    font-family: 'Figtree';
+    font-weight: 700;
+    font-size: 1.85em;
+    letter-spacing: 0.2px;
+   
+}
+.sliderBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    /* border: 2px solid blue; */
+    left: 0px;
+    right: 0px;
+    top: calc(50% - 18px);
+}
+
+.sliderBtn {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+    cursor: pointer;
+}
+
+.sliderBtn:hover {
+    background: #fafafa;
+}
+
+.sliderBtn svg {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.sliderWrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+.categoryCardContainer {
+  flex: 0 0 auto;
+  width: 80vw; /* takes most of screen on mobile */
+  max-width: 300px; /* limit on desktop */
+}
+
+@media (max-width: 768px) {
+    .pageCategoriesHeading{
+        font-weight: 700;
+        font-size: 2.85em;
+        letter-spacing: 0.2px;
+    }
+.categoryCardContainer{
+    /* border: 2px solid red; */
+}
+    .sliderBtn {
+      font-size: 2em;
+    }
+    .sliderBtn{
+        width: 25px;
+        height: 25px;
+    }
+    .sliderWrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.categoryCardContainer {
+  flex: 0 0 auto;
+  width: 80vw; /* takes most of screen on mobile */
+  max-width: 300px; /* limit on desktop */
+}
+ .categoryCardContainer {
+    overflow: hidden;
+    width: 100vw;
+    max-width: 100%;
+  }
+}
+/* Only applied when screen is desktop (min-width: 768px) */
+@media (min-width: 768px) {
+  .paddedCard {
+    padding-left: 10rem;
+  }
+}

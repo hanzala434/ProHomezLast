@@ -1,0 +1,134 @@
+.ordersHeading {
+    font-family: 'Figtree';
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+  
+  .ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .orderCard {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  }
+  
+  .orderId {
+    margin-bottom: 0.2em;
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.4em;
+  }
+  
+  .orderDate {
+    color: #2d2d2d;
+    margin-bottom: 1rem;
+    font-family: 'Figtree';
+    font-weight: 300;
+  }
+  .orderDetailHeading{
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-bottom: 0.2em;
+  }
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 1rem;
+  }  
+
+  /* Category Buttons */
+.categoriesDisplayBtn {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  border: 1px solid #0b0b0b;
+  border-radius: 5px;
+  padding: 8px 12px;
+  transition: all 0.3s ease-in-out;
+  margin: 5px; /* Adds spacing between buttons */
+  margin-bottom: 2.8%;
+}
+
+
+.categoriesDisplayBtn:hover {
+  color: white;
+  /* background-color: var(--main-primary-color); */
+  background: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+}
+
+.categoryActive {
+  /* background: var(--main-primary-color); */
+  background: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+  border-color: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+  font-weight: 600;
+  padding: 4px;
+}
+
+  @media all and (max-width:600px) {
+    .ordersHeading {
+      margin-top: 14vh;
+      font-size: 3.4em;
+      font-weight: 600;
+    }
+    .ordersList p,li,strong{
+      /* font-size: 4rem; */
+    }
+    .orderId{
+      font-size: 3rem;
+    }
+    .orderDate{
+      font-size: 3rem;
+    }
+    .order{
+      font-size: 3rem;
+    }
+    .orderDetailHeading{
+      font-size: 3rem;
+    }
+    .orderdetailPara{
+      font-size: 3rem;
+    }
+    .orderdetailstrong{
+      font-size: 3rem;
+    }
+    .orderdetailli{
+      font-size: 3rem;
+    }
+
+    .categoryButton{
+      font-family: 'Figtree', sans-serif;
+      font-weight: 500;
+      font-size: 4em;
+      border: 1px solid #0b0b0b;
+      border-radius: 5px;
+      padding: 8px 12px;
+      transition: all 0.3s ease-in-out;
+      margin: 5px; /* Adds spacing between buttons */
+      margin-bottom: 2.8%;
+      background: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+      border-color: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+    }
+    
+    
+    .categoriesDisplayBtn:hover {
+      color: white;
+      /* background-color: var(--main-primary-color); */
+      background: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+    }
+    
+    .categoryActive {
+      /* background: var(--main-primary-color); */
+      background: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+      border-color: linear-gradient(rgb(249, 197, 106), rgb(131, 101, 49));
+      font-weight: 600;
+      padding: 4px;
+      font-size: 2em;
+    }
+  }

@@ -1,0 +1,144 @@
+.contactFormBox{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    padding: 1em 2em;
+    border-radius: 12px;
+}
+
+.contactFormLabel {
+    font-family: 'Manrope';
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 0.3em;
+}
+
+
+.contactFormLabel span {
+    font-size: inherit;
+}
+
+.contactFormInput {
+    background: #fafafa;
+    font-size: 1.15em;
+    padding: 0.4em 1em;
+    border-radius: 9px;
+    border: 1px solid #b5b5b5;
+}
+
+.contactFormInput[type="number"]::-webkit-outer-spin-button,
+.contactFormInput[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.contactFormOption {
+    font-size: inherit;
+    font-family: 'Manrope';
+}
+
+.contactFormOption:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.contactFormSubmitBtn {
+    background: var(--main-primary-color);
+    border: none;
+    color: #0b0b0b;
+    padding: 1em 1.6em;
+    font-family: 'Manrope';
+    font-weight: 500;
+    border-radius: 8px;
+    width: 100%;
+}
+
+
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.spinner {
+    border: 4px solid #fff;
+    border-top: 4px solid var(--main-primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* @media screen and (max-width: 1199px) {
+    .contactFormLabel {
+        font-size: 1.4em;
+    }
+
+    .contactFormInput {
+        font-size: 1.4em;
+    }
+
+    .contactFormSubmitBtn {
+        font-size: 1.4em;
+    }
+} */
+
+/* @media screen and (max-width: 992px) {
+    .contactFormLabel {
+        font-size: 1.8em;
+    }
+
+    .contactFormInput {
+        font-size: 1.8em;
+    }
+
+    .contactFormSubmitBtn {
+        font-size: 1.8em;
+    }
+} */
+
+/* @media screen and (max-width: 767px) {
+    .contactFormLabel {
+        font-size: 2.2em;
+    }
+
+    .contactFormInput {
+        font-size: 2.2em;
+    }
+
+    .contactFormSubmitBtn {
+        font-size: 2.2em;
+    }
+} */
+
+@media all and (max-width: 600px) {
+    .contactFormBox {
+        padding-top: 1.5em;
+        /* border: 2px solid blue; */
+        width: 90%;
+        margin-left: 3%;
+    }
+
+    .contactFormLabel {
+        font-size: 2rem;
+    }
+
+    .contactFormInput {
+        font-size: 2rem;
+    }
+
+    .contactFormSubmitBtn {
+        font-size: 2rem;
+    }
+}

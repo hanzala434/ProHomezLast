@@ -1,0 +1,24 @@
+@media all and (max-width:600px) {
+    .ratep1{
+        font-size: 3rem !important;
+        /* border: 2px solid black; */
+    }
+    .userStar1{
+        
+        font-size: 2.5rem;
+    }
+    .ratingcontainer1{
+        /* border: 2px solid blue; */
+        font-size: 0.8rem;
+        margin-left: 0% !important;
+    }
+    .ratep1 strong{
+        font-size: 3rem;
+    }
+    .ratingcontainer1 h3{
+        font-size: 3rem;
+    }
+}
+.ratingcontainer1{
+    margin-left: 1%;
+}

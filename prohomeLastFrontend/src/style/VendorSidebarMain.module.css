@@ -1,0 +1,102 @@
+.vendorSidebarMainBox{
+    background: #f0f0f0;
+    padding: 2rem 0em;
+    min-height: 100svh;
+    z-index: 1;
+    position: sticky;
+    top: 0px;
+}
+.sidebarLogo{
+    width: 35%;
+}
+.sidebarMenuBox{
+    padding: 2.5em 0em;
+    
+}
+.sidebarMenuHeading{
+    font-family: 'Figtree';
+    font-weight: 600;
+    font-size: 1.23em;
+    padding: 0rem 2rem;
+}
+.sidebarMenuList a{
+    color: #000000;
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    padding: .5rem 2rem;
+    text-decoration: none;
+    gap: 10px;
+}
+.sidebarMenuList a:hover{
+    background-color: var(--main-primary-color);
+}
+.sidebarMenuList .activeMenu{
+    background-color: var(--main-primary-color);
+}
+.sidebarMenuList a svg{
+    font-size: inherit;
+}
+.sidebarlistContainer{
+    margin-top: 1em;
+}
+@media all and (max-width:600px) {
+    .vendorSidebarMainBox a{
+        font-size: 3rem;
+        padding: 0rem 0em;
+    }
+    .vendorSidebarMainBox{
+        /* border: 2px solid red; */
+        position: sticky;
+        /* border-bottom: 2px solid black; */
+        background-color: white;
+        box-shadow: 0px 2rem 8px rgba(0, 0, 0, 0.1);
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        min-height: 10vh;
+        max-height: 10vh;
+        padding: 0rem 0em;
+        margin-bottom: 100vh;
+    }
+    .sidebarMenuBox{
+        padding: 0em 0em;
+        /* border: 2px solid blue; */
+    }
+    .sidebarlistContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        /* justify-content: center; */
+        /* border: 2px solid blue; */
+        height: 100%;
+        width: 100%;
+        gap: 5rem;
+        margin-left:11rem;
+    }
+    .sidebarMenuList a{
+        font-size: 5rem;
+    }
+    .sidebarMenuList a span {
+        display: none; /* Hide text */
+
+    }
+    .sidebarLogoBox{
+        width: 30rem;
+        margin-right: 2%;
+        margin-left: 1%;
+        display: none !important;
+        border: 2px solid gray;
+    }
+    .sidebarLogoBox img{
+        object-fit: cover;
+        /* height: 100%; */
+        width:100%;
+    }
+    .sidebarMenuHeading{
+        display: none;
+    }
+}

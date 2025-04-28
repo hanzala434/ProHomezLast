@@ -1,0 +1,42 @@
+.featureRow {
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.featureSliderName {
+    font-family: 'Figtree';
+    padding: 0.7em 1.4em;
+    font-size: 1.6em;
+}
+.featureSliderHeading{
+    font-family: 'Figtree';
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.featureHeadingCol{
+    background: var(--main-primary-color)
+}
+@media screen and (max-width: 1199px) {
+    .featureSliderName {
+        font-size: 2.5em;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    .featureSliderName {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .featureSliderName {
+        font-size: 5em;
+        font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .featureSliderName {
+        font-size: 8.2em;
+    }
+}

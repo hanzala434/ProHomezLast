@@ -1,0 +1,36 @@
+    @media all and (max-width:600px) {
+        .searchInput{
+            font-size: 2.7rem;
+            height: 2.7vh;
+            margin-top: 2rem;
+        }
+        .googlelist{
+            font-size: 2.5rem;
+        }
+    
+        /* .customMarkerIcon{
+            font-size: 3rem !important;
+            height: 3rem;
+            width: 3rem;
+        } */
+        .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out {
+        width: 3rem !important;
+        height: 3rem !important;
+        font-size: 2rem !important;
+        line-height: 3rem !important;
+    }
+    .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out {
+      width: 3rem !important;
+      height: 3rem !important;
+      font-size: 2rem !important;
+      line-height: 3rem !important; /* Ensures the icon is centered */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .leaflet-control-attribution {
+        font-size: 3rem !important;
+      }
+    }

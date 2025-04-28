@@ -1,0 +1,155 @@
+.homeProductsVendor{
+    /* font-size: 14px; */
+    /* border: 2px solid blue; */
+    width: 50%;
+    padding: 0rem 1rem;
+    /* height: 10vh !important; */
+}
+.vendorDetailBox{
+width: 100%;
+}
+.contactButtons{
+    padding-top: 0 !important;
+}
+.homeProductsVendor{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    /* padding: 2em 1.5em; */
+    border-radius: 12px;
+}
+
+.listingAgentHeading{
+    font-family: 'Figtree';
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 16px;
+}
+.imgBox{
+    width: 90px;
+    height: 100%;
+    margin-left: 0.5rem;
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid green; */
+    /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2); */
+    /* border-radius: 50%; */
+}
+.imgBox img{
+    width: 100%;
+}
+.listingAgentDetail{
+    padding: 0.5em 1.5em;
+}
+.vendorName{
+    font-family: 'Figtree';
+    font-size: 14px;
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+.vendorDetail{
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 14px;
+}
+.vendorContactBtn{
+    width: 100%;
+    background: var(--main-primary-color);
+    margin-bottom: 0.5em;
+    font-family: 'Poppins';
+    padding: 0.6em 0em;
+    font-weight: 600;
+    color: #454545;
+    transition: all 0.3s;
+}
+.vendorContactBtn:hover{
+    background-color: #ebba09;
+}
+
+@media (max-width: 768px) {
+    .listingAgentHeading{
+        font-family: 'Figtree';
+        font-weight: 600;
+        text-decoration: underline;
+        font-size: 2.2em;
+    }
+
+    .vendorName{
+        font-family: 'Figtree';
+        font-size: 2.5em;
+        margin-bottom: 0.2em;
+        font-weight: 600;
+    }
+    .vendorDetail{
+        font-family: 'Poppins';
+        font-weight: 400;
+        font-size: 3em;
+    }
+    .vendorContactBtn{
+        width: 100%;
+        background: var(--main-primary-color);
+        margin-bottom: 0.5em;
+        font-family: 'Poppins';
+        padding: 0.6em 0em;
+        font-weight: 600;
+        color: #454545;
+        transition: all 0.3s;
+        font-size: 2em;
+    }
+
+    .realEstateListingAgent{
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+        padding: 4em;
+        border-radius: 12px;
+    }
+    .vendorDetail{
+        font-size: 2.2rem;
+    }
+    .imgBox
+    {   
+        margin-left: 3rem;
+        /* border: 2px solid blue; */
+        height: 10vh;
+    
+    }
+    .imgBox img{
+        width: 100%;
+        
+    }
+    .vendorHeading{
+        font-size: 2.2rem;
+    }
+    .homeProductsVendor{
+        height: 10vh !important;
+        width: auto;
+        padding: 0rem 1rem;
+    }
+    .vendorDetails{
+        margin-top: 20% !important;
+    }
+}
+.homeProductsVendor {
+    /* border: 2px solid blue; */
+    width: 50%;
+    height: 15vh;  /* Set the height */
+    display: flex; /* Ensures child elements are positioned properly */
+    align-items: center; /* Centers items vertically */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    border-radius: 12px;
+    overflow: hidden; /* Prevent content overflow */
+}
+.imgBox{
+    height: 15vh;
+}
+.vendorDetails a{
+    text-decoration: none;
+}
+.vendorDetails{
+    margin-top: 1.5rem;
+    display:flex;
+    height: 100% !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* border: 2px solid purple; */
+}

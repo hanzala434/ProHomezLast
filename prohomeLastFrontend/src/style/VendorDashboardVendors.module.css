@@ -1,0 +1,59 @@
+.vendorDashboardLink {
+    background: var(--main-primary-color);
+    font-family: 'Figtree';
+    font-weight: 600;
+    padding: 0.6em 1.3em;
+    font-size: 1.02em;
+    transition: all 0.3s;
+}
+
+.vendorDashboardLink:hover {
+    background: #ffc800;
+}
+
+.allProducts {
+    padding: 0rem 0rem;
+}
+
+.allProductHeading {
+    font-family: 'Figtree';
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.categoriesDisplayBtn {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.categoryActive {
+    background-color:rgb(131, 101, 49);
+    color: #fff;
+}
+@media all and (max-width:600px) {
+ .vendorDashboard{
+    margin-top: 25%;
+ }   
+ .allProductHeading{
+    font-size: 3rem;
+ }
+ .vendorDashboardLink{
+    /* font-size: 3rem; */
+ }
+ .categoriesDisplayBtn {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    font-size: 3em;
+}
+
+.categoryActive {
+    background-color:rgb(131, 101, 49);
+    color: #fff;
+}
+}

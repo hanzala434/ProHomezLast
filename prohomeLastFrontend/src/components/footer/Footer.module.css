@@ -1,0 +1,172 @@
+.footer{
+    background-color: #f7f7f7;
+    z-index: 2;
+    position: relative;
+    /* border: 2px solid blue; */
+}
+.footerHeading{
+    font-family: 'Manrope';
+    font-weight: 500;
+    font-size: 1.4em;
+}
+.footerlist{
+    margin-bottom: 5px;
+}
+.footerlistLink{
+    color: inherit;
+    font-family: 'Poppins';
+    font-size: 1.05em;
+    position: relative;
+}
+.footerlistLink svg{
+    position: relative;
+    left: 20px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.footerlistLink::before{
+    content: "";
+    width: 0%;
+    height: 2px ;
+    background-color: #000;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    transition: all 0.3s;
+}
+.footerlistLink:hover::before{
+    width: 100%;
+}
+.footerlistLink:hover svg{
+    left: 0px;
+    opacity: 1;
+}
+.copyrightContainer{
+    border-top: 1px solid #a3a3a3;
+}
+.copyrightClaim{
+    font-family: 'Poppins';
+    font-weight: 400;
+    text-align: center;
+}
+.creatorLink{
+    color: #0b0b0b;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s;
+}
+.creatorLink:hover{
+    color: var(--main-primary-color);
+}
+.creatorLink::before{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--main-blue-color);
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+.creatorLink:hover::before{
+    width: 100%;
+}
+.footerSocialLink{
+    font-size: 1.5em;
+    color: #0b0b0b;
+    transition: all 0.3s;
+    padding: 0.5em;
+    border-radius: 50%;
+    display: flex;
+}
+.footerSocialLink:hover{
+    background-color: var(--main-primary-color);
+}
+.footerSocialLink svg{
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+.footerAbout{
+    font-size: 1em;
+}
+@media screen and (max-width: 1199px) {
+    .footerHeading{
+        font-size: 2.2em;
+    }
+    .footerlistLink{
+        font-size: 1.35em;
+    }
+    .copyrightClaim{
+        font-size: 1.4em;
+    }
+    .copyrightClaim span{
+        font-size: inherit;
+    }
+    .copyrightClaim a{
+        font-size: inherit;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .footerHeading {
+        font-size: 2.6em;
+    }
+    
+    .footerlistLink {
+        font-size: 1.5em;
+    }
+    
+    .copyrightClaim {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footerHeading {
+        font-size: 3.5em;
+    }
+    
+    .footerlistLink {
+        font-size: 2.1em;
+    }
+    
+    .copyrightClaim {
+        font-size: 2.2em;
+    }
+    .footerAbout{
+        font-size: 4em;
+    }
+
+    .footerSocialLink svg{
+        font-size: 3em;
+        font-weight: inherit;
+        color: inherit;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        padding: 4em 5em;
+    }
+    .footerHeading {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: .5em;
+    }
+    
+    .footerlistLink {
+        font-size: 2em;
+    }
+    
+    .copyrightClaim {
+        font-size: 2.6em;
+    }
+    .footerAbout{
+        font-size: 2rem;
+    }
+    .footerSocialLink{
+        font-size: 1rem !important;
+    }
+}

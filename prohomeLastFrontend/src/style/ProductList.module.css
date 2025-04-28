@@ -1,0 +1,118 @@
+.productList{
+    background: #fafafa;
+    padding: 1rem 1rem;
+    margin: 0.7rem 0rem;
+    border-radius: 12px;
+}
+.imgBox{
+    width: 200px;
+}
+.imgBox img{
+    width: 100%;
+}
+.productInfoBox{
+    padding: 0.6rem 1.6rem;
+    width: 60%;
+}
+.productInfoBoxName{
+    font-family: 'Figtree';
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 2.85em;
+    line-height: 1.3;
+    -webkit-box-orient: vertical;
+}
+.productInfoBoxDescription{
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #292929;
+}
+.readMoreButton {
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: #1212c1;
+    padding-left: 5px;
+}
+.actionBtns{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.actionBtns :where(a, button){
+    border: none;
+    background-color: none;
+    text-decoration: none;
+    font-family: 'Figtree';
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #0a58ca;
+    transition: all 0.3s;
+}
+.actionBtns a:hover{
+    text-decoration: underline;
+    color: #0068ff;
+}
+.mainImage{
+    width: 20vw;
+    height: 30vh;
+    object-fit: cover;
+}
+@media all and (max-width :600px) {
+ .productList{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid blue; */
+    /* margin-top: 5rem; */
+ }   
+ .actionBtns{
+
+    font-size: 3rem;
+    gap: 1rem;
+    margin-right: 2rem;
+ }
+ .mainImage{
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+.productInfoBoxDescription{
+    /* border: 2px solid red; */
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+   width: 80vw !important;
+}
+.productInfoBoxName {
+    font-family: 'Figtree';
+    font-size: 3rem; /* Increased from 1.4rem */
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 2.85em;
+    line-height: 1.3;
+    -webkit-box-orient: vertical;
+}
+
+.productInfoBox{
+    border: 2px solid yellow;
+    width: 100%;
+}
+
+}
