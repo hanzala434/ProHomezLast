@@ -115,9 +115,10 @@ const router = createBrowserRouter([
         element: <HomeProductDetail />,
       },
       {
-        path: '/vendor/profile/:slug',
+        path: '/pro/:store_name/:id',
         element: <VendorProfilePage />,
       },
+      
       {
         path: '/products/home-products/:slug',
         element: <HomeProductDetail />,

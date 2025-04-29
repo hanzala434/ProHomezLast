@@ -668,8 +668,8 @@ export const checkoutOrder = async (req, res) => {
       // Validate product slugs and fetch corresponding vendor details
       const slugs = cartItems.map((item) => item.slug);
       const slugQuery = `
-          SELECT slug, productName, store_id, store_name, v.email,v.brand_type
-          FROM products p
+          SELECT slug, productName, store_id, store_name,vendorDetails, v.email,v.brand_type
+          FROM products
           JOIN vendors v ON store_id = v.store_id
           WHERE slug IN (?)
       `;
@@ -678,7 +678,7 @@ export const checkoutOrder = async (req, res) => {
       const existingSlugs = new Map(
           productRows.map((row) => [
               row.slug,
-              { productName: row.productName, store_id: row.store_id, store_name: row.store_name,email:row.email, brand_type: row.brand_type },
+              { productName: row.productName, store_id: row.store_id, store_name: row.store_name,email:row.email, brand_type: row.brand_type,vendorDetails:row.vendorDetails },
           ])
       );
 
@@ -800,49 +800,55 @@ export const checkoutOrder = async (req, res) => {
       
 export const getOrdersByVendor = async (req, res) => {
     const isAdmin = req.query.isAdmin;
-  const { store_id } = req.user; 
-  try {
-    let query;
-    if(isAdmin == 1){
+    const { store_id } = req.user; 
+  
+    try {
+      let query, params = [];
+  
+      if (isAdmin == 1) {
         query = `
-            SELECT 
-    order_id, 
-    JSON_UNQUOTE(client_details) AS client_details_raw, 
-    JSON_UNQUOTE(cart_items) AS cart_items_raw,  
-    total_cost, 
-    order_date, 
-    JSON_UNQUOTE(vendor_details) AS vendor_details_raw
-FROM orders
-ORDER BY order_date DESC;
-
-        `;
-    } else{
-        query = `
-            SELECT order_id, 
+          SELECT 
+            order_id, 
             JSON_UNQUOTE(client_details) AS client_details_raw, 
-            JSON_UNQUOTE(cart_items) AS cart_items_raw,   
-            total_cost, order_date, 
+            JSON_UNQUOTE(cart_items) AS cart_items_raw,  
+            total_cost, 
+            order_date, 
             JSON_UNQUOTE(vendor_details) AS vendor_details_raw
-            FROM orders
-            WHERE JSON_CONTAINS(vendor_details, JSON_OBJECT('store_id', ?))
-            ORDER BY order_date DESC
+          FROM orders
+          ORDER BY order_date DESC
         `;
-    }
-    const orders = await executeQuery(query, [store_id]);
-    const parsedOrders = orders.map(order => ({
+      } else {
+        query = `
+          SELECT 
+            order_id, 
+            JSON_UNQUOTE(client_details) AS client_details_raw, 
+            JSON_UNQUOTE(cart_items) AS cart_items_raw,  
+            total_cost, 
+            order_date, 
+            JSON_UNQUOTE(vendor_details) AS vendor_details_raw
+          FROM orders
+          WHERE JSON_SEARCH(vendor_details, 'one', ?, NULL, '$[*].store_id') IS NOT NULL
+          ORDER BY order_date DESC
+        `;
+        params.push(store_id);
+      }
+  
+      const orders = await executeQuery(query, params);
+  
+      const parsedOrders = orders.map(order => ({
         ...order,
         client_details: JSON.parse(order.client_details_raw || '{}'),
         cart_items: JSON.parse(order.cart_items_raw || '[]'),
-        vendor_details: JSON.parse(order.vendor_details_raw || '{}'),
-    }));
-    
-    res.status(200).json(parsedOrders);
-    
-  } catch (error) {
+        vendor_details: JSON.parse(order.vendor_details_raw || '[]'),
+      }));
+  
+      res.status(200).json(parsedOrders);
+    } catch (error) {
       console.error("Error fetching vendor orders:", error);
       res.status(500).json({ message: "Failed to fetch orders" });
-  }
-};
+    }
+  };
+  
 
 export const fetchAllVendorsPublic = async (req, res) => {
     try {

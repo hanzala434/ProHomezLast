@@ -12,19 +12,20 @@ const VendorProfileMain = () => {
   const { vendorItems, status } = useSelector((state: RootState) => state.products);
 
   const dispatch = useDispatch<AppDispatch>();
-  const { slug } = useParams<{ slug: string }>();
-  const vendorId = slug?.split('-').pop();
+  const { store_name, id } = useParams<{ store_name: string; id: string }>();
+  const vendorId = id;
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (slug) {
+    if (vendorId) {
       setLoading(true);
       dispatch(fetchVendorDetails2({ store_id: vendorId  as string  }));
       dispatch(fetchVendorProductsByStoreId({ store_id: vendorId  as string  }))
         .unwrap()
         .finally(() => setLoading(false));
     }
-  }, [slug, dispatch]);
+  }, [vendorId, dispatch]);
 
   return (
     <div className={styles.container}>

@@ -48,9 +48,9 @@ function Header() {
             <NavLink to="/contact" className={styles.navbarNavLink}>
               Contact
             </NavLink>
-              <NavLink to="/feed" className={styles.navbarNavLink}>
-              Time Line
-            </NavLink>
+              {/* <NavLink to="/feed" className={styles.navbarNavLink}>
+              Timeline
+            </NavLink> */}
           </nav>
 
            {/* Logo */}
@@ -113,9 +113,9 @@ function Header() {
     <NavLink to="/contact" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>
       Contact
     </NavLink>
-      <NavLink to="/feed" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>
-       Time Line
-    </NavLink>
+      {/* <NavLink to="/feed" className={styles.mobileNavLink} onClick={() => setMenuOpen(false)}>
+       Timeline
+    </NavLink> */}
 
     {!isLoggedIn ? (
       <>

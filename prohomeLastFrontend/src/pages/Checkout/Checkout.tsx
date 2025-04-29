@@ -16,9 +16,7 @@ interface CartProduct {
 }
 
 function Checkout() {
-  const [cartItems] = useState<CartProduct[]>(
-    JSON.parse(localStorage.getItem("cart") || "[]")
-  );
+  const [cartItems] = useState<CartProduct[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
   const [clientDetails, setClientDetails] = useState({
     name: "",
     email: "",
@@ -58,6 +56,10 @@ function Checkout() {
   };
 
   const handlePlaceOrder = async () => {
+    console.log("Cart Items:", cartItems); // Log cart items
+    console.log("Client Details:", clientDetails); // Log client details
+    console.log("Payment Method:", paymentMethod); // Log payment method
+
     if (!clientDetails.name || !clientDetails.address || !clientDetails.phone) {
       alert("Please fill in all required fields!");
       return;
@@ -69,19 +71,23 @@ function Checkout() {
     }
 
     try {
+      const orderData = {
+        clientDetails,
+        cartItems: cartItems.map((item) => ({
+          slug: item.slug,
+          productName: item.productName,
+          productPrice: item.productPrice,
+          discountedPrice: item.discountedPrice,
+          quantity: item.quantity,
+        })),
+        totalCost: calculateTotal(),
+      };
+
+      console.log("Sending Order Data:", orderData); // Log data being sent for checkout
+
       const response = await axios.post(
         `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/checkout`,
-        {
-          clientDetails,
-          cartItems: cartItems.map((item) => ({
-            slug: item.slug,
-            productName: item.productName,
-            productPrice: item.productPrice,
-            discountedPrice: item.discountedPrice,
-            quantity: item.quantity,
-          })),
-          totalCost: calculateTotal(),
-        },
+        orderData,
         {
           headers: {
             "Content-Type": "application/json",
@@ -90,29 +96,34 @@ function Checkout() {
       );
 
       const data = response.data;
+      console.log("Checkout Response:", response); // Log the response from the checkout API
       setOrderId(data.orderId);
       setPopupVisible(true);
       localStorage.removeItem("cart");
 
       // Now send customer data separately
       try {
+        const customerData = {
+          name: clientDetails.name,
+          email: clientDetails.email,
+          phone: clientDetails.phone,
+          address: clientDetails.address,
+          lat: mapCenter?.lat,
+          lng: mapCenter?.lng,
+        };
+
+        console.log("Sending Customer Data:", customerData); // Log data being sent for customer details
+
         const customerRes = await axios.post(
           `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/customerdata`,
-          {
-            name: clientDetails.name,
-            email: clientDetails.email,
-            phone: clientDetails.phone,
-            address: clientDetails.address,
-            lat: mapCenter?.lat,
-            lng: mapCenter?.lng,
-          },
+          customerData,
           {
             headers: {
               "Content-Type": "application/json",
             },
           }
         );
-        console.log(customerRes.data);
+        console.log("Customer Data Response:", customerRes.data); // Log the response for customer data
         alert("Customer data saved successfully!");
       } catch (error) {
         console.error("Error sending customer data:", error);
@@ -213,9 +224,6 @@ function Checkout() {
               className={styles.inputField}
             />
           </form>
-          {/* Google Map Search Component */}
-          {/* <GoogleMapSearch onLocationSelect={handleLocationSelect} /> */}
-    
         </div>
 
         {/* Order Summary */}
@@ -301,18 +309,7 @@ function Checkout() {
               </div>
             </div>
           )}
-              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", marginTop: "10px" }}>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.1880738890477!2d73.14565107330503!3d33.57446578390745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfed29312b725d%3A0xed42137e02f8517a!2sEducare%20Direct%20International!5e0!3m2!1sen!2s!4v1741204028366!5m2!1sen!2s" 
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "0" }}
-          
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
         </div>
-
-        
       </div>
     </div>
   );

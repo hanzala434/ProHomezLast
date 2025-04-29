@@ -22,12 +22,12 @@ interface Order {
   }>;
   total_cost: number;
   order_date: string;
-  vendor_details: Array<{
+  vendor_details: {
     store_id: string;
     store_name: string;
     VendorEmail: string;
-    brand_type: string; 
-  }>;
+    brand_type: string;
+  }[];
 }
 
 interface VendorSidebarMainProps {
@@ -39,6 +39,7 @@ function Orders({ isAdmin }: VendorSidebarMainProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -63,20 +64,7 @@ function Orders({ isAdmin }: VendorSidebarMainProps) {
           throw new Error("Invalid API response");
         }
 
-        const parsedOrders = response.data.map((order: any) => ({
-          ...order,
-          client_details: typeof order.client_details === "string"
-            ? JSON.parse(order.client_details)
-            : order.client_details,
-          cart_items: typeof order.cart_items === "string"
-            ? JSON.parse(order.cart_items)
-            : order.cart_items,
-          vendor_details: typeof order.vendor_details === "string"
-            ? JSON.parse(order.vendor_details)
-            : order.vendor_details,
-        }));
-
-        setOrders(parsedOrders);
+        setOrders(response.data);
       } catch (error) {
         if (axios.isAxiosError(error)) {
           setError(error.response?.data.message || "Failed to fetch orders");
@@ -90,21 +78,26 @@ function Orders({ isAdmin }: VendorSidebarMainProps) {
 
     fetchOrders();
   }, [isAdmin]);
-  console.log(orders);
-  // 🔍 Extract unique categories
+
+  // Extract unique categories
   const categories = Array.from(
-    new Set(
-      orders.flatMap((order) =>
-        order.vendor_details?.map((vendor) => vendor.brand_type) || []
-      )
-    )
+    new Set(orders.map((order) => order.vendor_details?.[0]?.brand_type).filter(Boolean))
   );
 
-  const filteredOrders = selectedCategory
-    ? orders.filter((order) =>
-        order.vendor_details?.some((vendor) => vendor.brand_type === selectedCategory)
-      )
-    : orders;
+  // Filtered orders based on category, search query (order_id or store_name)
+  const filteredOrders = orders.filter((order) => {
+    const matchesCategory = selectedCategory
+      ? order.vendor_details?.[0]?.brand_type === selectedCategory
+      : true;
+
+    const matchesSearch =
+      order.order_id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      order.vendor_details.some((vendor) =>
+        vendor.store_name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+    return matchesCategory && matchesSearch;
+  });
 
   if (loading) return <div>Loading orders...</div>;
   if (error) return <div className={styles.error}>{error}</div>;
@@ -113,62 +106,90 @@ function Orders({ isAdmin }: VendorSidebarMainProps) {
     <div className="min-h-[100vh] px-4 py-6">
       <h2 className={`mb-4 ${styles.ordersHeading}`}>Your Orders</h2>
 
+      {/* Search Bar */}
+      <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 m-2">
+        <input
+          type="text"
+          placeholder="Search by Order ID or Store Name..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
       {/* Category Buttons */}
       <div className="flex flex-wrap gap-3 mb-6 m-2">
-  <button
-    className={`${styles.categoryButton} ${
-      selectedCategory === null ? styles.categoryActive : ""
-    }`}
-    onClick={() => setSelectedCategory(null)}
-  >
-    All Categories
-  </button>
+        <button
+          className={`${styles.categoryButton} ${
+            selectedCategory === null ? styles.categoryActive : ""
+          }`}
+          onClick={() => setSelectedCategory(null)}
+        >
+          All Categories
+        </button>
 
-  {categories.map((cat) => (
-    <button
-      key={cat}
-      className={`${styles.categoryButton} ${
-        selectedCategory === cat ? styles.categoryActive : ""
-      }`}
-      onClick={() => setSelectedCategory(cat)}
-    >
-      {cat}
-    </button>
-  ))}
-</div>
-
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`${styles.categoryButton} ${
+              selectedCategory === cat ? styles.categoryActive : ""
+            }`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
       <div className={styles.ordersList}>
-        {filteredOrders.map((order) => (
-          <div key={order.order_id} className={styles.orderCard}>
-            <h4 className={styles.orderId}>Order ID: {order.order_id}</h4>
-            <p className={styles.orderDate}>
-              Date: {new Date(order.order_date).toLocaleDateString()}
-            </p>
-            <h5 className={styles.orderDetailHeading}>Customer Details:</h5>
-            <p className={styles.orderdetailPara}>
-              <strong className={styles.orderdetailstrong}>Name:</strong> {order.client_details.name}<br />
-              <strong className={styles.orderdetailstrong}>Email:</strong> {order.client_details.email}<br />
-              <strong className={styles.orderdetailstrong}>Number:</strong> {order.client_details.phone}<br />
-              <strong className={styles.orderdetailstrong}>Address:</strong> {order.client_details.address}, {order.client_details.city}, {order.client_details.state}, {order.client_details.country} - {order.client_details.postalCode}
-            </p>
+        {filteredOrders.length === 0 ? (
+          <p className="text-center text-gray-500">No orders found.</p>
+        ) : (
+          filteredOrders.map((order) => (
+            <div key={order.order_id} className={styles.orderCard}>
+              <h4 className={styles.orderId}>Order ID: {order.order_id}</h4>
+              <p className={styles.orderDate}>
+                Date: {new Date(order.order_date).toLocaleDateString()}
+              </p>
+              <p>
+                <strong>Vendors:</strong>
+                {order.vendor_details.map((vendor, index) => (
+                  <span key={index}>
+                    {vendor.store_name}
+                    {index < order.vendor_details.length - 1 && ", "}
+                  </span>
+                ))}
+              </p>
 
-            <h5 className={styles.orderDetailHeading}>Order Items:</h5>
-            <ul>
-              {order.cart_items.map((item, index) => (
-                <li key={index} className={styles.orderdetailli}>
-                  {item.productName} (x{item.quantity}) - $
-                  {((item.discountedPrice || item.productPrice) * item.quantity).toFixed(2)}
-                </li>
-              ))}
-            </ul>
+              <h5 className={styles.orderDetailHeading}>Customer Details:</h5>
+              <p className={styles.orderdetailPara}>
+                <strong className={styles.orderdetailstrong}>Name:</strong> {order.client_details.name}
+                <br />
+                <strong className={styles.orderdetailstrong}>Email:</strong> {order.client_details.email}
+                <br />
+                <strong className={styles.orderdetailstrong}>Number:</strong> {order.client_details.phone}
+                <br />
+                <strong className={styles.orderdetailstrong}>Address:</strong> {order.client_details.address}, {order.client_details.city}, {order.client_details.state}, {order.client_details.country} - {order.client_details.postalCode}
+              </p>
 
-            <h5 className={styles.orderDetailHeading}>Total Cost: ${order.total_cost.toFixed(2)}</h5>
-          </div>
-        ))}
+              <h5 className={styles.orderDetailHeading}>Order Items:</h5>
+              <ul>
+                {order.cart_items.map((item, index) => (
+                  <li key={index} className={styles.orderdetailli}>
+                    {item.productName} (x{item.quantity}) - $
+                    {((item.discountedPrice || item.productPrice) * item.quantity).toFixed(2)}
+                  </li>
+                ))}
+              </ul>
+
+              <h5 className={styles.orderDetailHeading}>Total Cost: ${order.total_cost.toFixed(2)}</h5>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
 }
 
 export default Orders;
+ 

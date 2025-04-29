@@ -31,7 +31,7 @@ function VendorCard({ vendor }: ProductCardProps) {
   }, [vendor?.image]);
 
   return (
-    <Link to={`/vendor/profile/${vendor?.store_name?.toLowerCase().replace(/\s+/g, "-")}-${vendor?.store_id}`}>
+<Link to={`/pro/${vendor?.store_name ?? 'no-store'}/${vendor?.store_id ?? ''}`} className="text-decoration-none">
 
       <div className={styles.cardBox}>
         <div className={`${styles.imgBox}`}>

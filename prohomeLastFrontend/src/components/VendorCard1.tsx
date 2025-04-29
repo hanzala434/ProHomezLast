@@ -30,8 +30,8 @@ function VendorCard1({ vendor }: ProductCardProps) {
   }, [vendor?.image]);
 
   return (
-    <Link to={`/vendor/profile/${vendor?.store_id ?? ''}`} className="text-decoration-none">
-      <div className={styles.cardBox}>
+<Link to={`/pro/${vendor?.store_name ?? 'no-store'}/${vendor?.store_id ?? ''}`} className="text-decoration-none">
+    <div className={styles.cardBox}>
         <div className={`${styles.imgBox}`}>
           <div className="flex justify-center mb-6">
             <img src={previewImage || defaultImage} alt="Profile" className="w-full h-32 shadow-md" />
