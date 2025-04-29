@@ -21,6 +21,33 @@ function DisplayMedia({ isAdmin }: VendorSidebarMainProps) {
     const [loading, setLoading] = useState<boolean>(false);
     const [fileError, setFileError] = useState<string | null>(null);
 
+
+    const deleteImage = async (imageName: string) => {
+        if (!window.confirm("Are you sure you want to delete this image?")) return;
+      
+        try {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            throw new Error('User is not authenticated. Token is missing.');
+          }
+      
+          const res = await axios.delete(`${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/images/${imageName}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+      
+          if (res.data.status === "Success") {
+            fetchImages(); // Refresh the image list
+          } else {
+            alert('Failed to delete the image.');
+          }
+        } catch (err) {
+          console.error('Error deleting image:', err);
+          alert('Something went wrong while deleting the image.');
+        }
+      };
+      
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const selectedFiles = e.target.files ? Array.from(e.target.files) : [];
         if (selectedFiles.length > 0) {
@@ -118,6 +145,7 @@ function DisplayMedia({ isAdmin }: VendorSidebarMainProps) {
           },
           params: { isAdmin },
         });
+        const imageNames = res.data.map((imageObj: { image: string }) => imageObj.image);
 
         setImages(res.data);
       } catch (err) {
@@ -238,7 +266,7 @@ function DisplayMedia({ isAdmin }: VendorSidebarMainProps) {
                         <div className="d-flex flex-wrap row-gap-2 column-gap-4 ">
                             {
                                 images.slice().reverse().map((image) => (
-                                        <div className={`${styles.mediaImgBox} d-flex justify-content-center align-items-center rounded-3`} key={image.id}>
+                                        <div className={`${styles.mediaImgBox} position-relative d-flex justify-content-center align-items-center rounded-3`} key={image.id}>
                                             <img
                                                 src={`${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/images/${image.image}`}
                                                 alt="Uploaded Media"
@@ -247,6 +275,12 @@ function DisplayMedia({ isAdmin }: VendorSidebarMainProps) {
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#imgurldisplay"
                                             />
+                                             <button
+                                            className="btn btn-danger btn-sm position-absolute bottom-0 end-0 m-1"
+                                            onClick={() => deleteImage(image.image)}
+                                            >
+                                            Delete
+                                            </button>
                                         </div>
                                 ))
                             }

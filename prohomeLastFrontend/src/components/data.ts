@@ -63,7 +63,7 @@ export const HomeProductPageContent: ParentCategoryPageContent = {
   heroSection: {
     heading: "Bring Your Dream Home to Life with ProHomez",
     description: "Explore our curated collection of premium home products that adds style, warmth, and personality to any space.",
-    quickSearches: ['Luxury Homes', 'Furniture', 'Lighting'],
+    quickSearches: [],
     bgImage: HomeProductBgImg,
   },
   category: "Home Products",

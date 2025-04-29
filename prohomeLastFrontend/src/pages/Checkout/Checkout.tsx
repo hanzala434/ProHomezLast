@@ -16,7 +16,9 @@ interface CartProduct {
 }
 
 function Checkout() {
-  const [cartItems] = useState<CartProduct[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
+  const [cartItems] = useState<CartProduct[]>(
+    JSON.parse(localStorage.getItem("cart") || "[]")
+  );
   const [clientDetails, setClientDetails] = useState({
     name: "",
     email: "",
@@ -56,10 +58,6 @@ function Checkout() {
   };
 
   const handlePlaceOrder = async () => {
-    console.log("Cart Items:", cartItems); // Log cart items
-    console.log("Client Details:", clientDetails); // Log client details
-    console.log("Payment Method:", paymentMethod); // Log payment method
-
     if (!clientDetails.name || !clientDetails.address || !clientDetails.phone) {
       alert("Please fill in all required fields!");
       return;
@@ -71,23 +69,20 @@ function Checkout() {
     }
 
     try {
-      const orderData = {
-        clientDetails,
-        cartItems: cartItems.map((item) => ({
-          slug: item.slug,
-          productName: item.productName,
-          productPrice: item.productPrice,
-          discountedPrice: item.discountedPrice,
-          quantity: item.quantity,
-        })),
-        totalCost: calculateTotal(),
-      };
-
-      console.log("Sending Order Data:", orderData); // Log data being sent for checkout
-
       const response = await axios.post(
         `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/checkout`,
-        orderData,
+        {
+          clientDetails,
+          cartItems: cartItems.map((item) => ({
+            slug: item.slug,
+            productName: item.productName,
+            productPrice: item.productPrice,
+            discountedPrice: item.discountedPrice,
+            quantity: item.quantity,
+            store_id: item.store_id,
+          })),
+          totalCost: calculateTotal(),
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -96,35 +91,30 @@ function Checkout() {
       );
 
       const data = response.data;
-      console.log("Checkout Response:", response); // Log the response from the checkout API
       setOrderId(data.orderId);
       setPopupVisible(true);
       localStorage.removeItem("cart");
 
       // Now send customer data separately
       try {
-        const customerData = {
-          name: clientDetails.name,
-          email: clientDetails.email,
-          phone: clientDetails.phone,
-          address: clientDetails.address,
-          lat: mapCenter?.lat,
-          lng: mapCenter?.lng,
-        };
-
-        console.log("Sending Customer Data:", customerData); // Log data being sent for customer details
-
         const customerRes = await axios.post(
           `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/customerdata`,
-          customerData,
+          {
+            name: clientDetails.name,
+            email: clientDetails.email,
+            phone: clientDetails.phone,
+            address: clientDetails.address,
+            lat: mapCenter?.lat,
+            lng: mapCenter?.lng,
+          },
           {
             headers: {
               "Content-Type": "application/json",
             },
           }
         );
-        console.log("Customer Data Response:", customerRes.data); // Log the response for customer data
-        alert("Customer data saved successfully!");
+        console.log(customerRes.data);
+        // alert("Customer data saved successfully!");
       } catch (error) {
         console.error("Error sending customer data:", error);
         alert("Failed to send customer data");
@@ -224,6 +214,8 @@ function Checkout() {
               className={styles.inputField}
             />
           </form>
+          {/* Google Map Search Component */}
+          {/* <GoogleMapSearch onLocationSelect={handleLocationSelect} /> */}
         </div>
 
         {/* Order Summary */}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import styles from '../style/SearchBox.module.css';
+import defaultImage from '../assets/images/prohomez-logo.webp';
 const API_BASE = import.meta.env.VITE_PROHOMEZ_BACKEND_URL;
 
 interface Product {
@@ -98,11 +99,11 @@ const SearchBox:React.FC<ProductGridProps> = () => {
               onClick={() => navigate(`/products/${product.mainCategory}/${product.slug}`)}
             >
               <img 
-                src={product.selectedImages.startsWith("http") ? product.selectedImages : `http://localhost:5000/images/${product.selectedImages}`} 
+                src={product.selectedImages.startsWith("http") ? product.selectedImages : `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/images/${product.selectedImages}`} 
                 alt={product.productName}
                 className={styles.searchResultImage}
                 onError={(e) => { 
-                  (e.target as HTMLImageElement).src = "/images/default.jpg"; // Fallback image
+                  (e.target as HTMLImageElement).src = defaultImage; // Fallback image
                 }}
               />
               <span className={styles.productName1}>{product.productName}</span>

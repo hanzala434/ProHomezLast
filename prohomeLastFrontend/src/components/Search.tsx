@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import styles from "../style/Search.module.css";
 const API_BASE = import.meta.env.VITE_PROHOMEZ_BACKEND_URL;
+import defaultImage from '../assets/images/prohomez-logo.webp';
 
 interface Product {
   productName: string;
@@ -74,7 +75,7 @@ const Search:React.FC<ProductGridProps> = ({ mainCategory }) => {
               alt={product.productName} 
               className={styles.searchImage1}
               onError={(e) => { 
-                (e.target as HTMLImageElement).src = "/images/default.jpg"; // Fallback image
+                (e.target as HTMLImageElement).src = defaultImage; // Fallback image
               }} 
             />
             <h3>{product.productName}</h3>

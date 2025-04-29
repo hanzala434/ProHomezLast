@@ -13,10 +13,45 @@ import checkSMTP from '../utils/smtpValidator.js';
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 import axios from 'axios';
-
+import fs from 'fs';
+import path from 'path';
 
 const otpStore = {};
 dotenv.config(); 
+
+export const DeleteImageByName = async (req, res) => {
+    const { imageName } = req.params;  // Get the image name from the URL parameter
+    console.log("Image Name received:", imageName); // Debug log for the received image name
+
+    try {
+        // Construct the file path to the image on the server
+        const filePath = path.join(process.cwd(), 'public/images', imageName);
+
+        // Delete the image from the file system
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error('Error deleting file from server:', err.message);
+                return res.status(500).json({ status: 'Error', message: 'Failed to delete image from server.' });
+            }
+            console.log('Image deleted from server successfully');
+        });
+
+        // Delete the image record from the database
+        const result = await db.query('DELETE FROM media WHERE image = ?', [imageName]);
+        console.log('Database Query Result:', result); // Debug log for database query result
+
+        if (result.affectedRows === 0) {
+            console.log("Image not found in the database.");
+            return res.status(404).json({ status: 'Error', message: 'Image not found in the database.' });
+        }
+
+        res.json({ status: 'Success', message: 'Image deleted successfully.' });
+
+    } catch (error) {
+        console.error('Error deleting image:', error.message);
+        res.status(500).json({ status: 'Error', message: error.message });
+    }
+};
 //////////////////////////////////////
 // @desc    Create a post
 // @route   POST /api/posts
@@ -656,147 +691,71 @@ const generateOrderId = () => {
 };
 
 export const checkoutOrder = async (req, res) => {
-  const { error } = orderValidationSchema.validate(req.body, { abortEarly: false });
-  if (error) {
-      const errorMessages = error.details.map((err) => err.message);
-      return res.status(400).json({ message: errorMessages });
-  }
-
-  const { clientDetails, cartItems, totalCost } = req.body;
-
-  try {
-      // Validate product slugs and fetch corresponding vendor details
-      const slugs = cartItems.map((item) => item.slug);
-      const slugQuery = `
-          SELECT slug, productName, store_id, store_name,vendorDetails, v.email,v.brand_type
-          FROM products
-          JOIN vendors v ON store_id = v.store_id
-          WHERE slug IN (?)
-      `;
-      const productRows = await executeQuery(slugQuery, [slugs]);
-
-      const existingSlugs = new Map(
-          productRows.map((row) => [
-              row.slug,
-              { productName: row.productName, store_id: row.store_id, store_name: row.store_name,email:row.email, brand_type: row.brand_type,vendorDetails:row.vendorDetails },
-          ])
-      );
-
-      const missingProducts = cartItems.filter((item) => !existingSlugs.has(item.slug));
-      if (missingProducts.length > 0) {
-          const missingNames = missingProducts.map((item) => item.productName).join(", ");
-          return res.status(400).json({ message: `The following products are not available: ${missingNames}` });
-      }
-
-      const vendorDetails = [];
-      for (const item of cartItems) {
-          const productData = existingSlugs.get(item.slug);
-          vendorDetails.push({
-              store_id: productData.store_id,
-              store_name: productData.store_name,
-              productName: productData.productName,
-              VendorEmail:productData.email,
-                brand_type: productData.brand_type
-          });
-      }
-    //   console.log(productData);
-      // Generate a unique order ID
-      const orderId = generateOrderId();
-      // Save the order in the database
-      const orderQuery = `
-          INSERT INTO orders (order_id, client_details, cart_items, total_cost, vendor_details, order_date)
-          VALUES (?, ?, ?, ?, ?, NOW())
-      `;
-      const orderResult = await executeQuery(orderQuery, [
-          orderId,
-          JSON.stringify(clientDetails),
-          JSON.stringify(cartItems),
-          totalCost,
-          JSON.stringify(vendorDetails),
-      ]);
-
-
-      console.log(vendorDetails);
-
-      // Send Email to Customer
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.prohomez.com', // Replace with your SMTP server
-        port: 465, // Use 587 for TLS
-        secure: true, // Use false for TLS
-        auth: {
-            user: process.env.EMAIL_USER, 
-            pass: process.env.EMAIL_PASS, 
-        },
-            tls: {
-        rejectUnauthorized: false // ⚠️ Allow self-signed certificates
+    const { error } = orderValidationSchema.validate(req.body, { abortEarly: false });
+    if (error) {
+        const errorMessages = error.details.map((err) => err.message);
+        return res.status(400).json({ message: errorMessages });
     }
-    });
-    console.log(cartItems);
-    const userMailOptions = {
-        from: process.env.EMAIL_USER,
-        to: clientDetails.email,
-        subject: "Order Confirmation - Your Order has been placed",
-        html: `
-            <h2>Thank you for your order, ${clientDetails.name}!</h2>
-            <p>Your order ID: <strong>${orderId}</strong></p>
-            <p>Total Amount: <strong>$${totalCost}</strong></p>
-            <h3>Order Details:</h3>
-            <table border="1" cellspacing="0" cellpadding="10">
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Original Price</th>
-                        <th>Discounted Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${cartItems
-                        .map(
-                            (item) => `
-                            <tr>
-                                <td>${item.productName}</td>
-                                <td>$${item.productPrice}</td>
-                                <td>$${item.discountedPrice}</td>
-                                <td>${item.quantity}</td>
-                            </tr>
-                        `
-                        )
-                        .join("")}
-                </tbody>
-            </table>
-            <p>We will notify you when your order is shipped.</p>
-        `,
-    };
-    
-    await transporter.sendMail(userMailOptions);
+  
+    const { clientDetails, cartItems, totalCost } = req.body;
+  
+    try {
+        // Validate product slugs and fetch corresponding vendor details
+        const slugs = cartItems.map((item) => item.slug);
+        
+        const slugQuery = `
+      SELECT p.slug, p.productName, v.store_id, v.store_name 
+        FROM products p
+        JOIN vendors v ON p.storeId = v.store_id
+        WHERE p.slug IN (?)
 
-
-    // Send Email to Vendors
-    for (const vendor of vendorDetails) {
-
-        const vendorMailOptions = {
-            from: process.env.EMAIL_USER,
-            to: vendor.VendorEmail,
-            subject: "New Order Received",
-            html: `
-                <h2>New Order Received</h2>
-                <p>Store: <strong>${vendor.store_name}</strong></p>
-                <p>Product: <strong>${vendor.productName}</strong></p>
-                <p>Customer: <strong>${clientDetails.name}</strong></p>
-                <p>Address: ${clientDetails.address}, ${clientDetails.city}, ${clientDetails.country}</p>
-                <p>Please process the order as soon as possible.</p>
-            `,
-        };
-
-        await transporter.sendMail(vendorMailOptions);
+        `;
+        const productRows = await executeQuery(slugQuery, [slugs]);
+  
+        const existingSlugs = new Map(
+            productRows.map((row) => [
+                row.slug,
+                { productName: row.productName, store_id: row.store_id, store_name: row.store_name },
+            ])
+        );
+  
+        const missingProducts = cartItems.filter((item) => !existingSlugs.has(item.slug));
+        if (missingProducts.length > 0) {
+            const missingNames = missingProducts.map((item) => item.productName).join(", ");
+            return res.status(400).json({ message:` The following products are not available: ${missingNames}` });
+        }
+  
+        const vendorDetails = [];
+        for (const item of cartItems) {
+            const productData = existingSlugs.get(item.slug);
+            vendorDetails.push({
+                store_id: productData.store_id,
+                store_name: productData.store_name,
+                productName: productData.productName,
+            });
+        }
+        // Generate a unique order ID
+        const orderId = generateOrderId();
+        // Save the order in the database
+        const orderQuery = `
+            INSERT INTO orders (order_id, client_details, cart_items, total_cost, vendor_details, order_date)
+            VALUES (?, ?, ?, ?, ?, NOW())
+        `;
+        const orderResult = await executeQuery(orderQuery, [
+            orderId,
+            JSON.stringify(clientDetails),
+            JSON.stringify(cartItems),
+            totalCost,
+            JSON.stringify(vendorDetails),
+        ]);
+  
+        res.status(201).json({ message: "Order placed successfully!", orderId, vendorDetails,
+        });
+    } catch (error) {
+        console.error("Error saving order:", error);
+        res.status(500).json({ message: "Failed to place order" });
     }
-      res.status(201).json({ message: "Order placed successfully!", orderResult });
-  } catch (error) {
-      console.error("Error saving order:", error);
-      res.status(500).json({ message: "Failed to place order" });
-  }
-};
+  };
       
 export const getOrdersByVendor = async (req, res) => {
     const isAdmin = req.query.isAdmin;

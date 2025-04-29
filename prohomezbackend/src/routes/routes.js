@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { uploadImages,sendemail,getCustomers,customerdata,sendOtp,verifyOtp,resetPassword,getProductRating,submitRating,verifyEmailController, getAllImages, createProduct, getProducts,getProductImages,getProdcutsByMainCategory,getProductsByCategory, getVendor,getVendorProfile, updateVendorProfile, updateVendor, fetchVendorProducts, updateProduct, deleteProduct, getProductBySlug, fetchVendorDetails, checkoutOrder, getOrdersByVendor, fetchAllVendors, updateVendorAccess,fetchAllVendorsPublic, fetchVendorProductsByStoreId, updateVendorProfile2, fetchAllVendorsPublic2, fetchAllVendors2, fetchVendorDetails2, searchLocation, reverseGeocode,checkStoreId, checkEmail, loginVendor,hii, registerVendor,sendOTP, verifyOTP, updateVendorProfileById, createPost, getAllPosts, toggleLike, getLikes, getComments, addComment } from '../controllers/controllers.js';
+import { uploadImages,sendemail,getCustomers,customerdata,sendOtp,verifyOtp,resetPassword,getProductRating,submitRating,verifyEmailController, getAllImages, createProduct, getProducts,getProductImages,getProdcutsByMainCategory,getProductsByCategory, getVendor,getVendorProfile, updateVendorProfile, updateVendor, fetchVendorProducts, updateProduct, deleteProduct, getProductBySlug, fetchVendorDetails, checkoutOrder, getOrdersByVendor, fetchAllVendors, updateVendorAccess,fetchAllVendorsPublic, fetchVendorProductsByStoreId, updateVendorProfile2, fetchAllVendorsPublic2, fetchAllVendors2, fetchVendorDetails2, searchLocation, reverseGeocode,checkStoreId, checkEmail, loginVendor,hii, registerVendor,sendOTP, verifyOTP, updateVendorProfileById, createPost, getAllPosts, toggleLike, getLikes, getComments, addComment, DeleteImageByName } from '../controllers/controllers.js';
 import { authenticate } from '../middleware/authmiddleware.js';
 import nodemailer from "nodemailer";
 
@@ -106,6 +106,7 @@ router.post('/send-email',sendemail)
 router.post("/checkout", checkoutOrder);
 router.get("/product/:id/images", getProductImages);
 router.get("/orders", authenticate, getOrdersByVendor);
+router.delete('/images/:imageName',DeleteImageByName);
 router.get("/products/:mainCategory", async (req, res) => {
     try {
       const { mainCategory } = req.params;
