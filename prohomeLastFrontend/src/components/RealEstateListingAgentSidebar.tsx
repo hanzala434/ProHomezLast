@@ -21,8 +21,13 @@ function RealEstateListingAgentSidebar({vendorDetail}: RealEstateListingProps) {
             <div className={`${styles.listingAgentDetailBox} d-flex my-4`}>
                 <div className={`${styles.imgBox}`}>
                     <a className='flex justify-center' href={`/vendor/profile/${singleProduct?.storeId}`}>
-                    <img src={vendorDetail.image || vendorLogo} alt="ProHomez" />
-                    </a>
+                    <img 
+  src={vendorDetail.image 
+    ? `${import.meta.env.VITE_PROHOMEZ_BACKEND_URL}/images/${vendorDetail.image}` 
+    : vendorLogo} 
+  alt="ProHomez" 
+/>
+</a>
                 </div>
                 <div className={`${styles.listingAgentDetail}`}>
                 <a
